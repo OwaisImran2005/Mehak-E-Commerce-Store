@@ -3,9 +3,23 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Men = ({ mdata }: { mdata: product }) => {
+interface Product {
+  slug: string;
+  tagType: string;
+  imageUrl: string;
+  name: string;
+  title: string;
+  price: number;
+  oldprice?: number;
+  percentOff?: number;
+  available: boolean;
+  tagGender?: string;
+  tagCategory?: string;
+}
 
-  const getProductPath = (product: any) => {
+const Men = ({ mdata }: { mdata: Product }) => {
+
+  const getProductPath = (product: Product) => {
     switch (mdata.tagType) {
       case 'fragrance':
         return `/Product/${mdata.slug}`;
@@ -19,7 +33,6 @@ const Men = ({ mdata }: { mdata: product }) => {
   };
   return (
     <div className="flex-1 min-w-[280px] max-w-[320px] bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl m-2 transform transition-transform duration-300 hover:-translate-y-4">
-      <Link href={getProductPath(mdata.slug)}>
         <div className="relative h-64 w-full">
           <Image
             src={urlFor(mdata.imageUrl).url()}
@@ -70,6 +83,7 @@ const Men = ({ mdata }: { mdata: product }) => {
             )}
           </div>
 
+                <Link href={getProductPath(mdata)}>
           <button
             disabled={!mdata.available}
             className={`w-full bg-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-cyan-600 transition-colors ${!mdata.available ? " cursor-not-allowed bg-red-600 hover:bg-red-600" : ""
@@ -77,8 +91,8 @@ const Men = ({ mdata }: { mdata: product }) => {
           >
             {mdata.available ? "View Details" : "Out of Stock"}
           </button>
-        </div>
       </Link>
+        </div>
 
 
     </div>
