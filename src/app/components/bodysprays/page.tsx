@@ -1,7 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { urlFor } from "@/sanity/lib/image";
 import { client } from "@/sanity/lib/client";
 import Bodysprays from "./bodysprays";
 
