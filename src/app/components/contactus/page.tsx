@@ -135,7 +135,7 @@ const Contactus = () => {
               </div>
               <div className="md:w-2/3">
                 <p className="text-gray-600 mb-4">
-                  Hi,  I'm <b> Muhammad Owais </b>, the proud owner of <i> Mehak . </i> With a passion for fragrances, I've curated a unique selection of perfumes that cater to every individual's taste. Feel free to reach out to me directly for any inquiries or special requests. I'm here to help you find the perfect scent!
+                  Hi,  I`m <b> Muhammad Owais </b>, the proud owner of <i> Mehak . </i> With a passion for fragrances, I`ve curated a unique selection of perfumes that cater to every individual`s taste. Feel free to reach out to me directly for any inquiries or special requests. I`m here to help you find the perfect scent!
                 </p>
                 <p className="text-gray-600">
                   Email: <Link href="https://mail.google.com/mail/u/0/#inbox" className="text-cyan-600">owaisimran55555@gmail.com</Link>
@@ -151,7 +151,7 @@ const Contactus = () => {
             <div className="bg-white p-8 rounded-lg shadow-lg text-center">
               <FaCheckCircle className="text-green-500 text-4xl mx-auto mb-4" />
               <h2 className="text-2xl font-semibold mb-2">Message Sent</h2>
-              <p className="text-gray-600 mb-4">Thank you for contacting us! We'll get back to you shortly.</p>
+              <p className="text-gray-600 mb-4">Thank you for contacting us! We`ll get back to you shortly.</p>
               <button
                 onClick={closePopup}
                 className="bg-cyan-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-cyan-700 transition-colors"
