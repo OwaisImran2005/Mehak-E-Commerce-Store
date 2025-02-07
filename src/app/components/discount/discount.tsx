@@ -2,9 +2,24 @@ import { urlFor } from '@/sanity/lib/image'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+  
 
-const Discount = ({ ddata }: { ddata: product }) => {
-  const getProductPath = (product: any) => {
+interface Product {
+  slug: string;
+  tagType: string;
+  imageUrl: string;
+  name: string;
+  title: string;
+  price: number;
+  oldprice?: number;
+  percentOff?: number;
+  available: boolean;
+  tagGender?: string;
+  tagCategory?: string;
+}
+
+const Discount = ({ ddata }: { ddata: Product }) => {
+  const getProductPath = (product: Product) => {
   switch (ddata.tagType) {
     case 'fragrance':
       return `/Product/${ddata.slug}`;
@@ -19,7 +34,6 @@ const Discount = ({ ddata }: { ddata: product }) => {
 
   return (
       <div className="flex-1 min-w-[280px] max-w-[320px] bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl m-2 transform transition-transform duration-300 hover:-translate-y-4">
-<Link href={getProductPath(ddata.slug)}>
       <div className="relative h-64 w-full">
         <Image
           src={urlFor(ddata.imageUrl).url()}
@@ -70,6 +84,7 @@ const Discount = ({ ddata }: { ddata: product }) => {
           )}
         </div>
 
+        <Link href={getProductPath(ddata)}>
         <button
           disabled={!ddata.available}
           className={`w-full bg-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-cyan-600 transition-colors ${
@@ -78,8 +93,8 @@ const Discount = ({ ddata }: { ddata: product }) => {
         >
           {ddata.available ? "View Details" : "Out of Stock"}
         </button>
-      </div>
           </Link>
+      </div>
     </div>
     )
 }
