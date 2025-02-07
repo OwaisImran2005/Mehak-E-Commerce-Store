@@ -66,7 +66,7 @@ const Attars = ({ adata }: { adata: product} ) => {
       : "bg-red-600 text-white cursor-not-allowed hover:bg-red-600" 
   }`}
 >
-  {adata.available ? "Add to Cart" : "Out of Stock"}
+  {adata.available ? "View Details" : "Out of Stock"}
 </button>
             </Link>
       </div>
