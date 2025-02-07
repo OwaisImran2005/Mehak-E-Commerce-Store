@@ -10,7 +10,6 @@ import men from "@/app/media/Screenshot (59).png"
 import women from "@/app/media/pexels-cottonbro-4154204.jpg"
 import { FaAward, FaExchangeAlt, FaTint } from "react-icons/fa";
 import sale from "@/app/media/pexels-pixabay-207518.jpg";
-import { client } from "@/sanity/lib/client";
 import Lt from "./latest/page";
 import Bs from "./bestsellers/page";
 import BackToTopButton from "./back2top";
