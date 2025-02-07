@@ -13,6 +13,7 @@ type product = {
     description: string;
     available: boolean;
     quantity:number;
-    price_data:number;
+     price_data: {
+    unit_amount: number;
 }
-
+}
