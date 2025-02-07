@@ -78,10 +78,10 @@ const Footer = () => {
                     Best sellers
                   </Link>
                   <Link href="/components/men" className="block text-base hover:text-cyan-600">
-                    Men's Fragrances
+                    Men`s Fragrances
                   </Link>
                   <Link href="/components/women" className="block text-base hover:text-cyan-600">
-                    Women's Fragrances
+                    Women`s Fragrances
                   </Link>
                   <Link href="/components/bodysprays" className="block text-base hover:text-cyan-600">
                     Body sprays
