@@ -3,7 +3,7 @@ import { client } from "@/sanity/lib/client";
 import Women from "./women";
 import BackToTopButton from "../back2top";
 
-const women = async ({ data1 }: { data1: product }) => {
+const women = async () => {
   const querry = `*[_type == 'women'] | order(_updatedAt asc ){
 name,"imageUrl": image.asset->url,title,price,oldprice,percentOff,
 tagGender,tagCategory,tagType,available,description,"slug":slug.current}`
