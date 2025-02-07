@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || "");
 
-const A_details = ({ adata }: { adata: any }) => {
+const A_details = ({ adata }: { adata: product }) => {
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [orderDetails, setOrderDetails] = useState({
     name: "",
