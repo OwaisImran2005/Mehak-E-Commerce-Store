@@ -3,9 +3,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Latest = ({ ldata }: { ldata: product }) => {
 
-  const getProductPath = (product: any) => {
+interface Product {
+  slug: string;
+  tagType: string;
+  imageUrl: string;
+  name: string;
+  title: string;
+  price: number;
+  oldprice?: number;
+  percentOff?: number;
+  available: boolean;
+  tagGender?: string;
+  tagCategory?: string;
+}
+
+const Latest = ({ ldata }: { ldata: Product }) => {
+
+  const getProductPath = (product: Product) => {
     switch (ldata.tagType) {
       case 'fragrance':
         return `/Product/${ldata.slug}`;
@@ -20,7 +35,6 @@ const Latest = ({ ldata }: { ldata: product }) => {
 
   return (
     <div className="flex-1 min-w-[280px] max-w-[320px] bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:-translate-y-3 m-2">
-      <Link href={getProductPath(ldata.slug)}>
         <div className="relative h-64 w-full">
           <Image
             src={urlFor(ldata.imageUrl).url()}
@@ -71,6 +85,7 @@ const Latest = ({ ldata }: { ldata: product }) => {
             )}
           </div>
 
+          <Link href={getProductPath(ldata)}>
           <button
             disabled={!ldata.available}
             className={`w-full bg-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-cyan-600 transition-colors ${!ldata.available
@@ -80,8 +95,8 @@ const Latest = ({ ldata }: { ldata: product }) => {
           >
             {ldata.available ? 'View Details' : 'Out of Stock'}
           </button>
-        </div>
       </Link>
+        </div>
     </div>
   );
 };
