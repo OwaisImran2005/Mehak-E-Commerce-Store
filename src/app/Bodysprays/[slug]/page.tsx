@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import B_details from "@/app/components/bodysprays/B-details";
 
