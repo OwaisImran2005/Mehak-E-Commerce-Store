@@ -6,17 +6,11 @@ import { TiShoppingCart } from "react-icons/ti";
 import h1 from "@/app/media/nolan-kent-aZM1ng82J40-unsplash.jpg";
 import f1 from "@/app/media/perfume-7639482_1280.jpg";
 import f2 from "@/app/media/Screenshot (58).png";
-import { FaStar } from "react-icons/fa";
 import men from "@/app/media/Screenshot (59).png"
 import women from "@/app/media/pexels-cottonbro-4154204.jpg"
 import { FaAward, FaExchangeAlt, FaTint } from "react-icons/fa";
 import sale from "@/app/media/pexels-pixabay-207518.jpg";
-import { FaSnowflake } from "react-icons/fa";
-import { FaRegSnowflake } from "react-icons/fa6";
 import { client } from "@/sanity/lib/client";
-import Fragrances from "@/app/components/fragrances/page";
-import Latest from "./latest/latest";
-import Bestsellers from "./bestsellers/bestsellers";
 import Lt from "./latest/page";
 import Bs from "./bestsellers/page";
 import BackToTopButton from "./back2top";
@@ -25,11 +19,6 @@ import BackToTopButton from "./back2top";
 
 
 const HeroSection = async () => {
-
-    const querry2 = `*[_type == 'bestsellers'] | order(_updatedAt asc ){
-    name,"imageUrl": image.asset->url,title,price,oldprice,percentOff,
-    tagGender,tagCategory,tagType,available,description,"slug":slug.current}`
-    const b_data: product[] = await client.fetch(querry2);
 
     return (
         <>
