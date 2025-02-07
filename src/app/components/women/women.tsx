@@ -3,8 +3,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Women = ({ wdata }: { wdata: product }) => {
-  const getProductPath = (product: any) => {
+interface Product {
+  slug: string;
+  tagType: string;
+  imageUrl: string;
+  name: string;
+  title: string;
+  price: number;
+  oldprice?: number;
+  percentOff?: number;
+  available: boolean;
+  tagGender?: string;
+  tagCategory?: string;
+}
+
+const Women = ({ wdata }: { wdata: Product }) => {
+  const getProductPath = (product: Product) => {
     switch (wdata.tagType) {
       case 'fragrance':
         return `/Product/${wdata.slug}`;
@@ -18,7 +32,6 @@ const Women = ({ wdata }: { wdata: product }) => {
   };
   return (
     <div className="flex-1 min-w-[280px] max-w-[320px] bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl m-2 transform transition-transform duration-300 hover:-translate-y-4">
-      <Link href={getProductPath(wdata.slug)}>
         <div className="relative h-64 w-full">
           <Image
             src={urlFor(wdata.imageUrl).url()}
@@ -69,6 +82,7 @@ const Women = ({ wdata }: { wdata: product }) => {
             )}
           </div>
 
+          <Link href={getProductPath(wdata)}>
           <button
             disabled={!wdata.available}
             className={`w-full bg-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-cyan-600 transition-colors ${!wdata.available ? " cursor-not-allowed bg-red-600 hover:bg-red-600" : ""
@@ -76,8 +90,8 @@ const Women = ({ wdata }: { wdata: product }) => {
           >
             {wdata.available ? "View Details" : "Out of Stock"}
           </button>
-        </div>
       </Link>
+        </div>
     </div>
   )
 }
