@@ -12,5 +12,7 @@ type product = {
     tagType: string;
     description: string;
     available: boolean;
+    quantity:number;
+    price_data:any;
 }
 
