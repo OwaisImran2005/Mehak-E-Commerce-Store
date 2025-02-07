@@ -2,26 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 15s linear infinite;
+  /* line-height: 1.5rem;  */
+}
+@media (max-width: 786px) {
+  .navbar {
+    display: none;
+  }
+  .cyan-strip {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .subscribe{
+    margin-top: 25px;
+  }
+}
+@media (max-width: 768px) {
+  .men-women-card {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.link_wrapper{
+  position: relative;
+}
+
+.shop{
+  display: block;
+  width: 250px;
+  height: 52px;
+  line-height: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  background: black;
+  text-align: center;
+  color: #06b6d4;
+  text-shadow: 1px 1px 1px black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid #06b6d4;
+  transition: all .35s;
+}
+
+.icon{
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 0;
+  top: 0;
+  z-index: -1;
+  transition: all .35s;
+}
+
+ .cart{
+  font-size: 30px;
+  /* width: 30px; */
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  transform: rotate(-45deg);
+  fill:  #06b6d4 ;
+  transition: all .35s;
+}
+
+.shop:hover{
+  width: 200px;
+  border: 2px solid #06b6d4 ;
+  background: transparent;
+  color: #06b6d4;
+}
+
+.shop:hover + .icon{
+  border: 3px solid #06b6d4;
+  right: -25%;
+}
+
+.box{
+  
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  
+}
+.ptext{
+  text-decoration: underline 5px solid #06b6d4;
+}
+/* .sale{
+  background-color: black;
+} */
+
+@keyframes fall {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}
+
+@keyframes marq2 {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glitter {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+.animate-fall {
+  animation: fall 10s linear infinite;
+}
+
+.animate-marq2 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marq2 13s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glitter {
+  animation: glitter 2s ease-in-out infinite;
 }

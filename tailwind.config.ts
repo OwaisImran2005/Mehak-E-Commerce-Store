@@ -8,10 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      
+ fontFamily: {
+  firesans: ["var(--font-fire-sans)", "cursive"],
+  poppins: ["var(--font-poppins-med)", "cursive"],
+   },
     },
   },
   plugins: [],
