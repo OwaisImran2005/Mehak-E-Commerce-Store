@@ -19,42 +19,45 @@ const F_details = ({ fdata }: { fdata: product }) => {
   });
   const [orderSubmitted, setOrderSubmitted] = useState(false);
 
-  const handleCheckout = async () => {
-    if (orderDetails.paymentMethod === "card") {
-      const stripeUI = await stripe;
+interface CheckoutSessionResponse {
+  sessionId: string;
+}
 
-      // Prepare the product data for Stripe
-      const productData = {
-        name: fdata.title,
-        description: fdata.description,
-        price_data: {
-          currency: "usd",
-          unit_amount: Math.round(fdata.price * 100), // Convert to cents
-        },
-        quantity: 1,
-        imageUrl: urlFor(fdata.imageUrl).url(),
-      };
+const handleCheckout = async () => {
+  if (orderDetails.paymentMethod === "card") {
+    const stripeUI = await stripe;
 
-      let sessionResponse: any = await fetch("/api/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: [productData],
-        }),
-      });
-      sessionResponse = await sessionResponse.json();
+    const productData = {
+      name: fdata.title,
+      description: fdata.description,
+      price_data: {
+        currency: "usd",
+        unit_amount: Math.round(fdata.price * 100), // Convert to cents
+      },
+      quantity: 1,
+      imageUrl: urlFor(fdata.imageUrl).url(),
+    };
 
-      stripeUI?.redirectToCheckout({
-        sessionId: sessionResponse.sessionId,
-      });
-    } else if (orderDetails.paymentMethod === "cash") {
-      // Simulate order submission for cash on delivery
-      setOrderSubmitted(true);
-    }
-  };
+    let sessionResponse: CheckoutSessionResponse = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: [productData],
+      }),
+    }).then((res) => res.json());
 
+    stripeUI?.redirectToCheckout({
+      sessionId: sessionResponse.sessionId,
+    });
+  } else if (orderDetails.paymentMethod === "cash") {
+    // Simulate order submission for cash on delivery
+    setOrderSubmitted(true);
+  }
+};
+
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setOrderDetails({ ...orderDetails, [name]: value });
