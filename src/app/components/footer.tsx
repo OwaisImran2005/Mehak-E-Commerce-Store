@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram, FaSnapchat, FaTwitter, FaEnvelope, FaPhone } from "react-icons/fa";
 import logo from "@/app/media/Logo.png";
 import Image from "next/image";
-import { FaThumbsUp } from "react-icons/fa";
+
 
 
 const Footer = () => {
