@@ -13,6 +13,6 @@ type product = {
     description: string;
     available: boolean;
     quantity:number;
-    price_data:any;
+    price_data:string;
 }
 
