@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
         // Calculate total amount including delivery fee
         const deliveryFee = 500; // $5.00 in cents
-        const totalAmount = data.reduce((acc: number, item: any) => acc + item.quantity * item.price_data.unit_amount, 0) + deliveryFee;
+        // const totalAmount = data.reduce((acc: number, item: any) => acc + item.quantity * item.price_data.unit_amount, 0) + deliveryFee;
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
             success_url: "https://www.google.com/",
             cancel_url: "https://www.fast.com",
             line_items: [
-                ...data.map((item: any) => ({
+                ...data.map((item: product) => ({
                     quantity: item.quantity,
                     price_data: {
                         currency: "usd",
