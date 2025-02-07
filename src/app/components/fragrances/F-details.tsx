@@ -38,7 +38,7 @@ const handleCheckout = async () => {
       imageUrl: urlFor(fdata.imageUrl).url(),
     };
 
-    let sessionResponse: CheckoutSessionResponse = await fetch("/api/checkout", {
+    const sessionResponse: CheckoutSessionResponse = await fetch("/api/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
