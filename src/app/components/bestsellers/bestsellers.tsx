@@ -35,7 +35,6 @@ const Bestsellers = ({ bdata }: { bdata: Product }) => {
 
   return (
     <div className="flex-1 min-w-[280px] max-w-[320px] bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl m-2 transform transition-transform duration-300 hover:-translate-y-4">
-      <Link href={getProductPath(bdata)}>
         <div className="relative h-64 w-full">
           <Image
             src={urlFor(bdata.imageUrl).url()}
@@ -80,6 +79,7 @@ const Bestsellers = ({ bdata }: { bdata: Product }) => {
             )}
           </div>
 
+      <Link href={getProductPath(bdata)}>
           <button
             disabled={!bdata.available}
             className={`w-full bg-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-cyan-600 transition-colors ${
@@ -88,8 +88,8 @@ const Bestsellers = ({ bdata }: { bdata: Product }) => {
           >
             {bdata.available ? 'View Details' : 'Out of Stock'}
           </button>
-        </div>
       </Link>
+        </div>
     </div>
   );
 };
